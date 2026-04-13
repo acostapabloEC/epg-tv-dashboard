@@ -102,12 +102,12 @@ export default function App() {
           <div style={{ width: 32, height: 32, background: GOLD, borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: BG }}>E</div>
           <div>
             <div style={{ fontSize: 14, fontWeight: 600 }}>Elite Partners Group — Marketing Performance</div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: MUTED, letterSpacing: 1, textTransform: "uppercase" }}>Frank LaRosa · LinkedIn · Jan–Apr 10, 2026</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: MUTED, letterSpacing: 1, textTransform: "uppercase" }}>Frank LaRosa · LinkedIn · Jan–Apr 13, 2026</div>
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <div style={{ background: GOLD_DIM, color: GOLD, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, textTransform: "uppercase", padding: "4px 12px", borderRadius: 6, border: `1px solid rgba(201,168,76,0.2)` }}>
-            Q2 Goal · 750 eng/month · 187/week
+            Apr 750 · May 700 · Jun 800 · 187/week
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 11, color: MUTED }}>
             <div style={{ width: 7, height: 7, borderRadius: "50%", background: GREEN, animation: "pulse 2s infinite" }} />
@@ -124,7 +124,7 @@ export default function App() {
         <KpiCard source="LinkedIn · Frank LaRosa" label="Total Engagements (Mar)" value="591" delta={engMoM} deltaLabel="vs Feb (543)" accent={GOLD} />
         <KpiCard source="LinkedIn · Frank LaRosa" label="Total Impressions (Mar)" value="46.6K" delta={imprMoM} deltaLabel="vs Feb (52.9K)" accent={BLUE} />
         <KpiCard source="LinkedIn · Frank LaRosa" label="New Followers (Mar)" value="163" delta={follMoM} deltaLabel="vs Feb (138)" accent={GREEN} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value="12,764" accent={PURPLE} sub="As of April 10, 2026" />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value="12,764" accent={PURPLE} sub="As of April 13, 2026" />
 
         {/* ROW 2 — CHART spans 2 cols */}
         <div style={{ gridColumn: "span 2", background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 10, padding: "12px 16px", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
@@ -162,14 +162,13 @@ export default function App() {
                 <XAxis dataKey="week" tick={{ fill: MUTED, fontSize: 9 }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fill: MUTED, fontSize: 9 }} axisLine={false} tickLine={false} />
                 <Tooltip content={<CustomTooltip />} />
-                <ReferenceLine y={5} stroke={GREEN} strokeDasharray="4 4" />
                 <Bar dataKey="posts" name="Posts" fill={GOLD} radius={[2, 2, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        {/* Q2 GOAL CARD */}
+        {/* Q2 GOAL CARD — updated goals */}
         <div style={{ background: "linear-gradient(135deg, #1a1600 0%, #0f1208 100%)", border: `1px solid rgba(201,168,76,0.25)`, borderRadius: 10, padding: "14px 18px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
           <div>
             <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 2, color: GOLD, textTransform: "uppercase", marginBottom: 6 }}>Q2 2026 · LinkedIn Goal</div>
@@ -184,10 +183,10 @@ export default function App() {
             <div style={{ height: 5, background: "rgba(255,255,255,0.07)", borderRadius: 3, overflow: "hidden", marginBottom: 4 }}>
               <div style={{ height: "100%", width: `${Math.min(aprPct, 100)}%`, background: GOLD, borderRadius: 3 }} />
             </div>
-            <div style={{ fontSize: 9, color: MUTED }}>{aprPct}% of goal · Apr 10 · 20 days remaining</div>
+            <div style={{ fontSize: 9, color: MUTED }}>{aprPct}% of goal · Apr 13 · 17 days remaining</div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6, marginTop: 10 }}>
-            {[{ label: "April", val: "750" }, { label: "May", val: "750" }, { label: "June", val: "750" }].map((g) => (
+            {[{ label: "April", val: "750" }, { label: "May", val: "700" }, { label: "June", val: "800" }].map((g) => (
               <div key={g.label} style={{ background: "rgba(201,168,76,0.08)", borderRadius: 6, padding: "7px", textAlign: "center" }}>
                 <div style={{ fontSize: 9, color: MUTED, marginBottom: 2 }}>{g.label}</div>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700, color: GOLD }}>{g.val}</div>
@@ -218,8 +217,8 @@ export default function App() {
       {/* FOOTER */}
       <div style={{ background: SURFACE, borderTop: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 24px", fontFamily: "'DM Mono', monospace", fontSize: 9, color: MUTED, letterSpacing: 0.5 }}>
         <span>Elite Partners Group · TV Dashboard · Frank LaRosa LinkedIn</span>
-        <span>Source: LinkedIn Analytics Export · Jan 11 – Apr 10, 2026</span>
-        <span>Q2 Goal: 2,250 engagements · Updated weekly</span>
+        <span>Source: LinkedIn Analytics Export · Jan 11 – Apr 13, 2026</span>
+        <span>Q2 Goals: Apr 750 · May 700 · Jun 800 · Weekly: 187</span>
       </div>
     </div>
   );
