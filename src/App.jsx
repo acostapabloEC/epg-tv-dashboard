@@ -24,6 +24,10 @@ const weeklyData = [
   { week: "Apr 20", engagements: 56,  impressions: 8273  },
   { week: "Apr 27", engagements: 68,  impressions: 3073  },
   { week: "May 04", engagements: 35,  impressions: 1306  },
+  { week: "Jun 15", engagements: 167, impressions: 14854 },
+  { week: "Jun 22", engagements: 208, impressions: 27499 },
+  { week: "Jun 29", engagements: 183, impressions: 22399 },
+  { week: "Jul 06", engagements: 178, impressions: 22606 },
 ];
 
 const GOLD     = "#c9a84c";
@@ -39,13 +43,13 @@ const BORDER   = "rgba(255,255,255,0.07)";
 const SURFACE  = "#111827";
 const BG       = "#0a0f1e";
 
-const engMoM  = Math.round(((419 - 591) / 591) * 100);
-const imprMoM = Math.round(((37045 - 46576) / 46576) * 100);
-const follMoM = Math.round(((104 - 163) / 163) * 100);
+const engMoM  = Math.round(((653 - 179) / 179) * 100);
+const imprMoM = Math.round(((81075 - 18031) / 18031) * 100);
+const follMoM = Math.round(((196 - 163) / 163) * 100);
 const aprEng  = 419;
 const aprPct  = Math.round((aprEng / 750) * 100);
-const mayEng  = 48;
-const mayPct  = Math.round((mayEng / 700) * 100);
+const mayEng  = 653;
+const mayPct  = Math.round((mayEng / 800) * 100);
 
 function Clock() {
   const [time, setTime] = useState(new Date());
@@ -130,7 +134,7 @@ export default function App() {
         <KpiCard source="LinkedIn · Frank LaRosa" label="Total Engagements (Apr)" value="419" delta={engMoM} deltaLabel="vs Mar (591)" accent={GOLD} />
         <KpiCard source="LinkedIn · Frank LaRosa" label="Total Impressions (Apr)" value="37.0K" delta={imprMoM} deltaLabel="vs Mar (46.6K)" accent={BLUE} />
         <KpiCard source="LinkedIn · Frank LaRosa" label="New Followers (Apr)" value="104" delta={follMoM} deltaLabel="vs Mar (163)" accent={GREEN} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value="12,809" accent={PURPLE} sub="As of May 7, 2026" />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value="12,952" accent={PURPLE} sub="As of Jun 28, 2026" />
 
         {/* ROW 2 — CHART spans 2 cols */}
         <div style={{ gridColumn: "span 2", background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 10, padding: "12px 16px", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
