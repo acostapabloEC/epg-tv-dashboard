@@ -27,7 +27,7 @@ const weeklyData = [
   { week: "Jun 15", engagements: 167, impressions: 14854 },
   { week: "Jun 22", engagements: 208, impressions: 27499 },
   { week: "Jun 29", engagements: 183, impressions: 22399 },
-  { week: "Jul 06", engagements: 178, impressions: 22606 },
+  { week: "Jun 28", engagements: 178, impressions: 22606 },
 ];
 
 const GOLD     = "#c9a84c";
@@ -43,9 +43,9 @@ const BORDER   = "rgba(255,255,255,0.07)";
 const SURFACE  = "#111827";
 const BG       = "#0a0f1e";
 
-const engMoM  = Math.round(((672 - 212) / 212) * 100);
-const imprMoM = Math.round(((82982 - 19904) / 19904) * 100);
-const follMoM = Math.round(((176 - 88) / 88) * 100);
+const engMoM  = Math.round(((636 - 212) / 212) * 100);
+const imprMoM = Math.round(((77878 - 19904) / 19904) * 100);
+const follMoM = Math.round(((161 - 88) / 88) * 100);
 const aprEng  = 419;
 const aprPct  = Math.round((aprEng / 750) * 100);
 const mayEng  = 653;
@@ -131,10 +131,10 @@ export default function App() {
       <div style={{ padding: "10px 14px", display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gridTemplateRows: "1fr 1.8fr", gap: 10, overflow: "hidden" }}>
 
         {/* ROW 1 — KPI CARDS */}
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Engagements (June)" value="672" delta={engMoM} deltaLabel="vs May (212)" accent={GOLD} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Impressions (June)" value="83.0K" delta={imprMoM} deltaLabel="vs May (19.9K)" accent={BLUE} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="New Followers (June)" value="176" delta={follMoM} deltaLabel="vs May (88)" accent={GREEN} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value="12,956" accent={PURPLE} sub="As of Jul 1, 2026" />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Engagements (June, thru 28)" value="636" delta={engMoM} deltaLabel="vs May (212)" accent={GOLD} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Impressions (June, thru 28)" value="77.9K" delta={imprMoM} deltaLabel="vs May (19.9K)" accent={BLUE} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="New Followers (June, thru 28)" value="161" delta={follMoM} deltaLabel="vs May (88)" accent={GREEN} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value="12,952" accent={PURPLE} sub="As of Jun 28, 2026" />
 
         {/* ROW 2 — CHART spans 2 cols */}
         <div style={{ gridColumn: "span 2", background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 10, padding: "12px 16px", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
