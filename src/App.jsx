@@ -43,9 +43,9 @@ const BORDER   = "rgba(255,255,255,0.07)";
 const SURFACE  = "#111827";
 const BG       = "#0a0f1e";
 
-const engMoM  = Math.round(((653 - 179) / 179) * 100);
-const imprMoM = Math.round(((81075 - 18031) / 18031) * 100);
-const follMoM = Math.round(((196 - 163) / 163) * 100);
+const engMoM  = Math.round(((672 - 212) / 212) * 100);
+const imprMoM = Math.round(((82982 - 19904) / 19904) * 100);
+const follMoM = Math.round(((176 - 88) / 88) * 100);
 const aprEng  = 419;
 const aprPct  = Math.round((aprEng / 750) * 100);
 const mayEng  = 653;
@@ -131,10 +131,10 @@ export default function App() {
       <div style={{ padding: "10px 14px", display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gridTemplateRows: "1fr 1.8fr", gap: 10, overflow: "hidden" }}>
 
         {/* ROW 1 — KPI CARDS */}
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Engagements (Apr)" value="419" delta={engMoM} deltaLabel="vs Mar (591)" accent={GOLD} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Impressions (Apr)" value="37.0K" delta={imprMoM} deltaLabel="vs Mar (46.6K)" accent={BLUE} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="New Followers (Apr)" value="104" delta={follMoM} deltaLabel="vs Mar (163)" accent={GREEN} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value="12,952" accent={PURPLE} sub="As of Jun 28, 2026" />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Engagements (June)" value="672" delta={engMoM} deltaLabel="vs May (212)" accent={GOLD} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Impressions (June)" value="83.0K" delta={imprMoM} deltaLabel="vs May (19.9K)" accent={BLUE} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="New Followers (June)" value="176" delta={follMoM} deltaLabel="vs May (88)" accent={GREEN} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value="12,956" accent={PURPLE} sub="As of Jul 1, 2026" />
 
         {/* ROW 2 — CHART spans 2 cols */}
         <div style={{ gridColumn: "span 2", background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 10, padding: "12px 16px", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
