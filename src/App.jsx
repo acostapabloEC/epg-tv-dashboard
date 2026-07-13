@@ -28,6 +28,8 @@ const weeklyData = [
   { week: "Jun 22", engagements: 208, impressions: 27499 },
   { week: "Jun 29", engagements: 183, impressions: 22399 },
   { week: "Jun 28", engagements: 178, impressions: 22606 },
+  { week: "Jul 01", engagements: 185, impressions: 19028 },
+  { week: "Jul 07", engagements: 175, impressions: 23368 },
 ];
 
 const GOLD     = "#c9a84c";
@@ -43,13 +45,12 @@ const BORDER   = "rgba(255,255,255,0.07)";
 const SURFACE  = "#111827";
 const BG       = "#0a0f1e";
 
-const engMoM  = Math.round(((636 - 212) / 212) * 100);
-const imprMoM = Math.round(((77878 - 19904) / 19904) * 100);
-const follMoM = Math.round(((161 - 88) / 88) * 100);
-const aprEng  = 419;
-const aprPct  = Math.round((aprEng / 750) * 100);
-const mayEng  = 653;
-const mayPct  = Math.round((mayEng / 800) * 100);
+const engMoM  = Math.round(((175 - 185) / 185) * 100);
+const imprMoM = Math.round(((23368 - 19028) / 19028) * 100);
+const follMoM = Math.round(((37 - 73) / 73) * 100);
+const julEng  = 360;
+const julGoal = 700;
+const julPct  = Math.round((julEng / julGoal) * 100);
 
 function Clock() {
   const [time, setTime] = useState(new Date());
@@ -112,12 +113,12 @@ export default function App() {
           <div style={{ width: 32, height: 32, background: GOLD, borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: BG }}>E</div>
           <div>
             <div style={{ fontSize: 14, fontWeight: 600 }}>Elite Partners Group — Marketing Performance</div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: MUTED, letterSpacing: 1, textTransform: "uppercase" }}>Frank LaRosa · LinkedIn · Jan–May 2026</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: MUTED, letterSpacing: 1, textTransform: "uppercase" }}>Frank LaRosa · LinkedIn · Jan–Jul 13, 2026</div>
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <div style={{ background: GOLD_DIM, color: GOLD, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, textTransform: "uppercase", padding: "4px 12px", borderRadius: 6, border: `1px solid rgba(201,168,76,0.2)` }}>
-            May 700 · Jun 800 · 175/week
+            Jul 700 · Aug 700 · 175/week
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 11, color: MUTED }}>
             <div style={{ width: 7, height: 7, borderRadius: "50%", background: GREEN, animation: "pulse 2s infinite" }} />
@@ -131,10 +132,10 @@ export default function App() {
       <div style={{ padding: "10px 14px", display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gridTemplateRows: "1fr 1.8fr", gap: 10, overflow: "hidden" }}>
 
         {/* ROW 1 — KPI CARDS */}
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Engagements (June, thru 28)" value="636" delta={engMoM} deltaLabel="vs May (212)" accent={GOLD} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Impressions (June, thru 28)" value="77.9K" delta={imprMoM} deltaLabel="vs May (19.9K)" accent={BLUE} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="New Followers (June, thru 28)" value="161" delta={follMoM} deltaLabel="vs May (88)" accent={GREEN} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value="12,952" accent={PURPLE} sub="As of Jun 28, 2026" />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Engagements (Jul 7–13)" value="175" delta={engMoM} deltaLabel="vs prior week (185)" accent={GOLD} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Impressions (Jul 7–13)" value="23.4K" delta={imprMoM} deltaLabel="vs prior week (19.0K)" accent={BLUE} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="New Followers (Jul 7–13)" value="37" delta={follMoM} deltaLabel="vs prior week (73)" accent={GREEN} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value="13,045" accent={PURPLE} sub="As of Jul 13, 2026" />
 
         {/* ROW 2 — CHART spans 2 cols */}
         <div style={{ gridColumn: "span 2", background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 10, padding: "12px 16px", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
@@ -171,29 +172,22 @@ export default function App() {
         {/* Q2 GOAL CARD — updated goals */}
         <div style={{ background: "linear-gradient(135deg, #1a1600 0%, #0f1208 100%)", border: `1px solid rgba(201,168,76,0.25)`, borderRadius: 10, padding: "14px 18px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
           <div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 2, color: GOLD, textTransform: "uppercase", marginBottom: 6 }}>Q2 2026 · LinkedIn Goal</div>
-            <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 36, fontWeight: 700, color: GOLD, lineHeight: 1 }}>2,250</div>
-            <div style={{ fontSize: 10, color: MUTED, marginTop: 4 }}>Total engagement target</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 2, color: GOLD, textTransform: "uppercase", marginBottom: 6 }}>Q3 2026 · LinkedIn Goal</div>
+            <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 36, fontWeight: 700, color: GOLD, lineHeight: 1 }}>2,100</div>
+            <div style={{ fontSize: 10, color: MUTED, marginTop: 4 }}>Total engagement target · 700/mo</div>
           </div>
           <div style={{ marginTop: 10 }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
-              <span style={{ fontSize: 10, color: MUTED }}>April (Done)</span>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: MUTED }}>{aprEng} / 750 · {aprPct}%</span>
-            </div>
-            <div style={{ height: 4, background: "rgba(255,255,255,0.07)", borderRadius: 3, overflow: "hidden", marginBottom: 8 }}>
-              <div style={{ height: "100%", width: `${Math.min(aprPct, 100)}%`, background: MUTED, borderRadius: 3 }} />
-            </div>
-            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
-              <span style={{ fontSize: 10, color: GOLD }}>May Progress</span>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: GOLD }}>{mayEng} / 700</span>
+              <span style={{ fontSize: 10, color: GOLD }}>July (in progress)</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: GOLD }}>{julEng} / 700</span>
             </div>
             <div style={{ height: 5, background: "rgba(255,255,255,0.07)", borderRadius: 3, overflow: "hidden", marginBottom: 4 }}>
-              <div style={{ height: "100%", width: `${Math.min(mayPct, 100)}%`, background: GOLD, borderRadius: 3 }} />
+              <div style={{ height: "100%", width: `${Math.min(julPct, 100)}%`, background: GOLD, borderRadius: 3 }} />
             </div>
-            <div style={{ fontSize: 9, color: MUTED }}>{mayPct}% of goal · May in progress</div>
+            <div style={{ fontSize: 9, color: MUTED }}>{julPct}% of goal · Wk 1–2 done</div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6, marginTop: 10 }}>
-            {[{ label: "April", val: "Done" }, { label: "May", val: "700" }, { label: "June", val: "800" }].map((g) => (
+            {[{ label: "July", val: "700" }, { label: "August", val: "700" }, { label: "September", val: "700" }].map((g) => (
               <div key={g.label} style={{ background: "rgba(201,168,76,0.08)", borderRadius: 6, padding: "7px", textAlign: "center" }}>
                 <div style={{ fontSize: 9, color: MUTED, marginBottom: 2 }}>{g.label}</div>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700, color: GOLD }}>{g.val}</div>
