@@ -28,9 +28,33 @@ const weeklyData = [
   { week: "Jun 22", engagements: 208, impressions: 27499 },
   { week: "Jun 29", engagements: 183, impressions: 22399 },
   { week: "Jun 28", engagements: 178, impressions: 22606 },
-  { week: "Jul 01", engagements: 185, impressions: 19028 },
-  { week: "Jul 07", engagements: 175, impressions: 23368 },
+  { week: "Jul 01", engagements: 185, impressions: 19028, followers: 73 },
+  { week: "Jul 07", engagements: 175, impressions: 23368, followers: 37 },
 ];
+
+// ── Derived from data arrays — update by editing weeklyData ──
+const DATA_YEAR      = 2026;
+const TOTAL_FOLLOWERS = 13045;
+const MONTHLY_GOALS  = { Jul: 700, Aug: 700, Sep: 700 };
+
+const latestWeek = weeklyData[weeklyData.length - 1];
+const prevWeek   = weeklyData[weeklyData.length - 2];
+
+const _wStartDay     = parseInt(latestWeek.week.split(" ")[1]);
+const _wMon          = latestWeek.week.split(" ")[0];
+const _wEndDay       = _wStartDay + 6;
+const weekLabel      = `${_wMon} ${_wStartDay}–${_wEndDay}`;
+const dateRangeLabel = `Jan–${_wMon} ${_wEndDay}, ${DATA_YEAR}`;
+
+const julEng  = weeklyData.filter(w => w.week.startsWith("Jul")).reduce((s, w) => s + w.engagements, 0);
+const julGoal = MONTHLY_GOALS.Jul;
+const julPct  = Math.round((julEng / julGoal) * 100);
+
+function fmtK(n) { return n >= 1000 ? `${(n / 1000).toFixed(1)}K` : String(n); }
+
+const engMoM  = Math.round(((latestWeek.engagements - prevWeek.engagements) / prevWeek.engagements) * 100);
+const imprMoM = Math.round(((latestWeek.impressions - prevWeek.impressions) / prevWeek.impressions) * 100);
+const follMoM = Math.round(((latestWeek.followers - prevWeek.followers) / prevWeek.followers) * 100);
 
 const GOLD     = "#c9a84c";
 const GOLD_DIM = "rgba(201,168,76,0.15)";
@@ -45,12 +69,6 @@ const BORDER   = "rgba(255,255,255,0.07)";
 const SURFACE  = "#111827";
 const BG       = "#0a0f1e";
 
-const engMoM  = Math.round(((175 - 185) / 185) * 100);
-const imprMoM = Math.round(((23368 - 19028) / 19028) * 100);
-const follMoM = Math.round(((37 - 73) / 73) * 100);
-const julEng  = 360;
-const julGoal = 700;
-const julPct  = Math.round((julEng / julGoal) * 100);
 
 function Clock() {
   const [time, setTime] = useState(new Date());
@@ -113,7 +131,7 @@ export default function App() {
           <div style={{ width: 32, height: 32, background: GOLD, borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: BG }}>E</div>
           <div>
             <div style={{ fontSize: 14, fontWeight: 600 }}>Elite Partners Group — Marketing Performance</div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: MUTED, letterSpacing: 1, textTransform: "uppercase" }}>Frank LaRosa · LinkedIn · Jan–Jul 13, 2026</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: MUTED, letterSpacing: 1, textTransform: "uppercase" }}>Frank LaRosa · LinkedIn · {dateRangeLabel}</div>
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
@@ -132,10 +150,10 @@ export default function App() {
       <div style={{ padding: "10px 14px", display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gridTemplateRows: "1fr 1.8fr", gap: 10, overflow: "hidden" }}>
 
         {/* ROW 1 — KPI CARDS */}
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Engagements (Jul 7–13)" value="175" delta={engMoM} deltaLabel="vs prior week (185)" accent={GOLD} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Impressions (Jul 7–13)" value="23.4K" delta={imprMoM} deltaLabel="vs prior week (19.0K)" accent={BLUE} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="New Followers (Jul 7–13)" value="37" delta={follMoM} deltaLabel="vs prior week (73)" accent={GREEN} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value="13,045" accent={PURPLE} sub="As of Jul 13, 2026" />
+        <KpiCard source="LinkedIn · Frank LaRosa" label={`Total Engagements (${weekLabel})`} value={latestWeek.engagements.toString()} delta={engMoM} deltaLabel={`vs prior week (${prevWeek.engagements})`} accent={GOLD} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label={`Total Impressions (${weekLabel})`} value={fmtK(latestWeek.impressions)} delta={imprMoM} deltaLabel={`vs prior week (${fmtK(prevWeek.impressions)})`} accent={BLUE} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label={`New Followers (${weekLabel})`} value={latestWeek.followers.toString()} delta={follMoM} deltaLabel={`vs prior week (${prevWeek.followers})`} accent={GREEN} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value={TOTAL_FOLLOWERS.toLocaleString()} accent={PURPLE} sub={`As of ${_wMon} ${_wEndDay}, ${DATA_YEAR}`} />
 
         {/* ROW 2 — CHART spans 2 cols */}
         <div style={{ gridColumn: "span 2", background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 10, padding: "12px 16px", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
@@ -178,13 +196,13 @@ export default function App() {
           </div>
           <div style={{ marginTop: 10 }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
-              <span style={{ fontSize: 10, color: GOLD }}>July (in progress)</span>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: GOLD }}>{julEng} / 700</span>
+              <span style={{ fontSize: 10, color: GOLD }}>{_wMon} (in progress)</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: GOLD }}>{julEng} / {julGoal}</span>
             </div>
             <div style={{ height: 5, background: "rgba(255,255,255,0.07)", borderRadius: 3, overflow: "hidden", marginBottom: 4 }}>
               <div style={{ height: "100%", width: `${Math.min(julPct, 100)}%`, background: GOLD, borderRadius: 3 }} />
             </div>
-            <div style={{ fontSize: 9, color: MUTED }}>{julPct}% of goal · Wk 1–2 done</div>
+            <div style={{ fontSize: 9, color: MUTED }}>{julPct}% of goal · in progress</div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6, marginTop: 10 }}>
             {[{ label: "July", val: "700" }, { label: "August", val: "700" }, { label: "September", val: "700" }].map((g) => (
@@ -218,7 +236,7 @@ export default function App() {
       <div style={{ background: SURFACE, borderTop: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 24px", fontFamily: "'DM Mono', monospace", fontSize: 9, color: MUTED, letterSpacing: 0.5 }}>
         <span>Elite Partners Group · TV Dashboard · Frank LaRosa LinkedIn</span>
         <span>Source: LinkedIn Native Analytics Export · Apr 3, 2025 – May 6, 2026</span>
-        <span>Q2 Goals: May 700 · Jun 800 · Weekly: 175</span>
+        <span>Q3 Goals: Jul {MONTHLY_GOALS.Jul} · Aug {MONTHLY_GOALS.Aug} · Sep {MONTHLY_GOALS.Sep} · Weekly: 175</span>
       </div>
     </div>
   );
