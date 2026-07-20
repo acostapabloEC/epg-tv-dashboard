@@ -23,18 +23,23 @@ const weeklyData = [
   { week: "Apr 13", engagements: 144, impressions: 10993 },
   { week: "Apr 20", engagements: 56,  impressions: 8273  },
   { week: "Apr 27", engagements: 68,  impressions: 3073  },
-  { week: "May 04", engagements: 35,  impressions: 1306  },
+  { week: "May 04", engagements: 50,  impressions: 4064  },
+  { week: "May 11", engagements: 35,  impressions: 3179  },
+  { week: "May 18", engagements: 70,  impressions: 7588  },
+  { week: "May 25", engagements: 24,  impressions: 3200  },
+  { week: "Jun 01", engagements: 83,  impressions: 14931 },
+  { week: "Jun 08", engagements: 12,  impressions: 1392  },
   { week: "Jun 15", engagements: 167, impressions: 14854 },
-  { week: "Jun 22", engagements: 208, impressions: 27499 },
-  { week: "Jun 29", engagements: 183, impressions: 22399 },
-  { week: "Jun 28", engagements: 178, impressions: 22606 },
+  { week: "Jun 22", engagements: 178, impressions: 22609, followers: 35 },
+  { week: "Jun 29", engagements: 36,  impressions: 5107,  followers: 15 },
   { week: "Jul 01", engagements: 185, impressions: 19028, followers: 73 },
-  { week: "Jul 07", engagements: 175, impressions: 23368, followers: 37 },
+  { week: "Jul 06", engagements: 220, impressions: 32756, followers: 74 },
+  { week: "Jul 13", engagements: 250, impressions: 32643, followers: 54 },
 ];
 
 // ── Derived from data arrays — update by editing weeklyData ──
 const DATA_YEAR      = 2026;
-const TOTAL_FOLLOWERS = 13045;
+const TOTAL_FOLLOWERS = 13062;
 const MONTHLY_GOALS  = { Jul: 700, Aug: 700, Sep: 700 };
 
 const latestWeek = weeklyData[weeklyData.length - 1];
