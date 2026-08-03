@@ -35,21 +35,28 @@ const weeklyData = [
   { week: "Jul 01", engagements: 185, impressions: 19028, followers: 73 },
   { week: "Jul 06", engagements: 220, impressions: 32756, followers: 74 },
   { week: "Jul 13", engagements: 250, impressions: 32643, followers: 54 },
+  { week: "Jul 20", engagements: 62,  impressions: 9832,  followers: 24 },
+  { week: "Jul 27", engagements: 55,  impressions: 8835,  followers: 20 },
 ];
 
 // ── Derived from data arrays — update by editing weeklyData ──
 const DATA_YEAR      = 2026;
-const TOTAL_FOLLOWERS = 13062;
+const TOTAL_FOLLOWERS = 13082;
 const MONTHLY_GOALS  = { Jul: 700, Aug: 700, Sep: 700 };
 
 const latestWeek = weeklyData[weeklyData.length - 1];
 const prevWeek   = weeklyData[weeklyData.length - 2];
 
+const MONTH_NAMES    = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const _wStartDay     = parseInt(latestWeek.week.split(" ")[1]);
 const _wMon          = latestWeek.week.split(" ")[0];
-const _wEndDay       = _wStartDay + 6;
-const weekLabel      = `${_wMon} ${_wStartDay}–${_wEndDay}`;
-const dateRangeLabel = `Jan–${_wMon} ${_wEndDay}, ${DATA_YEAR}`;
+const _wEndDate      = new Date(DATA_YEAR, MONTH_NAMES.indexOf(_wMon), _wStartDay + 6);
+const _wEndDay       = _wEndDate.getDate();
+const _wEndMon       = MONTH_NAMES[_wEndDate.getMonth()];
+const weekLabel      = _wEndMon === _wMon
+  ? `${_wMon} ${_wStartDay}–${_wEndDay}`
+  : `${_wMon} ${_wStartDay}–${_wEndMon} ${_wEndDay}`;
+const dateRangeLabel = `Jan–${_wEndMon} ${_wEndDay}, ${DATA_YEAR}`;
 
 const julEng  = weeklyData.filter(w => w.week.startsWith("Jul")).reduce((s, w) => s + w.engagements, 0);
 const julGoal = MONTHLY_GOALS.Jul;
@@ -158,7 +165,7 @@ export default function App() {
         <KpiCard source="LinkedIn · Frank LaRosa" label={`Total Engagements (${weekLabel})`} value={latestWeek.engagements.toString()} delta={engMoM} deltaLabel={`vs prior week (${prevWeek.engagements})`} accent={GOLD} />
         <KpiCard source="LinkedIn · Frank LaRosa" label={`Total Impressions (${weekLabel})`} value={fmtK(latestWeek.impressions)} delta={imprMoM} deltaLabel={`vs prior week (${fmtK(prevWeek.impressions)})`} accent={BLUE} />
         <KpiCard source="LinkedIn · Frank LaRosa" label={`New Followers (${weekLabel})`} value={latestWeek.followers.toString()} delta={follMoM} deltaLabel={`vs prior week (${prevWeek.followers})`} accent={GREEN} />
-        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value={TOTAL_FOLLOWERS.toLocaleString()} accent={PURPLE} sub={`As of ${_wMon} ${_wEndDay}, ${DATA_YEAR}`} />
+        <KpiCard source="LinkedIn · Frank LaRosa" label="Total Followers" value={TOTAL_FOLLOWERS.toLocaleString()} accent={PURPLE} sub={`As of ${_wEndMon} ${_wEndDay}, ${DATA_YEAR}`} />
 
         {/* ROW 2 — CHART spans 2 cols */}
         <div style={{ gridColumn: "span 2", background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 10, padding: "12px 16px", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" }}>
