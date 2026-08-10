@@ -37,11 +37,12 @@ const weeklyData = [
   { week: "Jul 13", engagements: 250, impressions: 32643, followers: 54 },
   { week: "Jul 20", engagements: 62,  impressions: 9832,  followers: 24 },
   { week: "Jul 27", engagements: 55,  impressions: 8835,  followers: 20 },
+  { week: "Aug 03", engagements: 43,  impressions: 4152,  followers: 17 },
 ];
 
 // ── Derived from data arrays — update by editing weeklyData ──
 const DATA_YEAR      = 2026;
-const TOTAL_FOLLOWERS = 13082;
+const TOTAL_FOLLOWERS = 13098;
 const MONTHLY_GOALS  = { Jul: 700, Aug: 700, Sep: 700 };
 
 const latestWeek = weeklyData[weeklyData.length - 1];
@@ -58,8 +59,8 @@ const weekLabel      = _wEndMon === _wMon
   : `${_wMon} ${_wStartDay}–${_wEndMon} ${_wEndDay}`;
 const dateRangeLabel = `Jan–${_wEndMon} ${_wEndDay}, ${DATA_YEAR}`;
 
-const julEng  = weeklyData.filter(w => w.week.startsWith("Jul")).reduce((s, w) => s + w.engagements, 0);
-const julGoal = MONTHLY_GOALS.Jul;
+const julEng  = weeklyData.filter(w => w.week.startsWith(_wMon)).reduce((s, w) => s + w.engagements, 0);
+const julGoal = MONTHLY_GOALS[_wMon] ?? 700;
 const julPct  = Math.round((julEng / julGoal) * 100);
 
 function fmtK(n) { return n >= 1000 ? `${(n / 1000).toFixed(1)}K` : String(n); }
