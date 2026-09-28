@@ -44,6 +44,7 @@ const weeklyData = [
   { week: "Aug 31", engagements: 191, impressions: 26419, followers: 46 },
   { week: "Sep 07", engagements: 197, impressions: 27091, followers: 61 },
   { week: "Sep 14", engagements: 58,  impressions: 8757,  followers: 26 },
+  { week: "Sep 21", engagements: 26,  impressions: 3319,  followers: 32 },
 ];
 
 // ── Derived from data arrays — update by editing weeklyData ──
