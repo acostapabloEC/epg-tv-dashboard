@@ -52,11 +52,12 @@ const weeklyData = [
   { week: "Oct 26", engagements: 61,  impressions: 12647, followers: 31 },
   { week: "Nov 02", engagements: 91, impressions: 29015, followers: 97 },
   { week: "Nov 09", engagements: 50,  impressions: 10254, followers: 120 },
+  { week: "Nov 16", engagements: 99,  impressions: 19010, followers: 68 },
 ];
 
 // ── Derived from data arrays — update by editing weeklyData ──
 const DATA_YEAR      = 2026;
-const TOTAL_FOLLOWERS = 13527;
+const TOTAL_FOLLOWERS = 13586;
 const MONTHLY_GOALS  = { Jul: 700, Aug: 700, Sep: 700 };
 
 const latestWeek = weeklyData[weeklyData.length - 1];
